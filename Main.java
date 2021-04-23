@@ -19,8 +19,16 @@ public class Main {
      */
     public static void main(String[] args) throws ClassNotFoundException  {
       //Dangnhap a= new Dangnhap();
-       new trangchu();
+      // new trangchu();
+      //////////////////////////////////////////////
       // new doanhthutong();
+      
+      
+      
+      
+      
+      
+      
     }
 }
 
