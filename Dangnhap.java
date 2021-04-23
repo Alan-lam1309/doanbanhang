@@ -27,7 +27,6 @@ public class Dangnhap {
         JButton submit = new JButton("Submit",new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\images (5) (2).jpg"));
         JButton exit = new JButton("Exit",new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\9739889771543238875-512.png"));
     
-    
     Dangnhap(){
         
         
