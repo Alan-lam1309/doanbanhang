@@ -24,12 +24,11 @@ public class Dangnhap {
         JPasswordField t2= new JPasswordField();
         JLabel name= new JLabel("Your Name:");
         JLabel pass= new JLabel("PassWord :");
-        JButton submit = new JButton("Submit",new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\images (5) (2).jpg"));
+        JButton submit = new JButton("Submit",new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\dangnhap.png"));
         JButton exit = new JButton("Exit",new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\9739889771543238875-512.png"));
-    
+        
     Dangnhap(){
-        
-        
+       
         l.setFont(new Font("Vẻdana", Font.PLAIN,50));
         j.add(l);
         l.setBounds(140,50,450,50);

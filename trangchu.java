@@ -32,6 +32,9 @@ public class trangchu {
         p.setBorder(BorderFactory.createLoweredBevelBorder());
         JPanel p1=new JPanel(null);
         JPanel p2=new JPanel(null);
+        JLabel background =new JLabel(new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\background1.jpg"));
+        background.setBounds(0, 0, 1680, 900);
+        
         
         JButton b1 = new JButton("Quản lí Cửa Hàng",new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (8) (2).jpg"));
         b1.setFont(new Font("Vẻdana", Font.PLAIN,21));
@@ -203,6 +206,7 @@ public class trangchu {
         
         
         j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        j.add(background);
         j.setVisible(true);
         
     }
