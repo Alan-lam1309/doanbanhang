@@ -32,6 +32,7 @@ public class trangchu {
         p.setBorder(BorderFactory.createLoweredBevelBorder());
         JPanel p1=new JPanel(null);
         JPanel p2=new JPanel(null);
+        JPanel p3=new JPanel(null);
         JLabel background =new JLabel(new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\background1.jpg"));
         background.setBounds(0, 0, 1680, 900);
         
@@ -43,10 +44,12 @@ public class trangchu {
         JButton b3 = new JButton("Quản lí Hàng Hóa");
         b3.setFont(new Font("Vẻdana", Font.PLAIN,21));
         JButton b4= new JButton("Quản lí Account");
+        b4.setFont(new Font("Vẻdana", Font.PLAIN,21));
         b1.setBounds(0,100,301,100);
         b2.setBounds(0,250,301,100);
         b3.setBounds(0,400,301,100);
         b4.setBounds(0,550,301,100);
+        j.add(b4);
         
         JButton nvq1 = new JButton("Nhân viên",new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\aaa.jpg"));
         JButton hhq1 = new JButton("Hàng hóa");
@@ -172,15 +175,19 @@ public class trangchu {
         p1.setVisible(false);
         p2.setBackground(Color.yellow);
         p2.setVisible(false);
+        p3.setBackground(Color.red);
+        p3.setVisible(false);
         p.setBounds (300,15,1225,815);
         p1.setBounds(300,15,1225,815);
         p2.setBounds(300,15,1225,815);
-        
+        p3.setBounds(300,15,1225,815);
+
         p1.add(l1);
         
         j.add(p);
         j.add(p1);
         j.add(p2);
+        j.add(p3);
         j.add(b1);
         j.add(b2);
         j.add(b3);
@@ -189,18 +196,31 @@ public class trangchu {
                 p1.setVisible(false);
                 p.setVisible(true);
                 p2.setVisible(false);
+                p3.setVisible(false);
         }});
         b2.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 p1.setVisible(true);
                 p.setVisible(false);
                 p2.setVisible(false);
+                p3.setVisible(false);
+
         }});
         b3.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 p1.setVisible(false);
                 p.setVisible(false);
                 p2.setVisible(true);
+                p3.setVisible(false);
+
+        }});
+        b4.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                p1.setVisible(false);
+                p.setVisible(false);
+                p3.setVisible(true);
+                p2.setVisible(false);
+
         }});
         
         
