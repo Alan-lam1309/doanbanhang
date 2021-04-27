@@ -13,6 +13,7 @@ import java.awt.geom.CubicCurve2D;
 import java.security.PKCS12Attribute;
 import java.util.Calendar;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -68,11 +69,13 @@ public class trangchu {
         JButton dtq4 = new JButton("Doanh thu");
         JButton hdq4 = new JButton("Hóa đơn");
         
+        
+        
         //phần doanh thu của tổng quán----------------------------------------------------------
         JLabel l1= new JLabel("DOANH THU CỦA CHUỖI");
         l1.setFont(new Font("Vẻdana", Font.PLAIN,50));
         l1.setBounds(330,0,1225,100);
-        
+
         JLabel l2=new JLabel("Tháng: ");
         l2.setFont(new Font("Vẻdana", Font.PLAIN,17));
         l2.setBounds(50,150,100,30);
@@ -101,7 +104,7 @@ public class trangchu {
            i--;
            a++;
        }
-        
+       
         p1.add(cb);
         p1.add(l2);
         p1.add(l3);
@@ -113,7 +116,63 @@ public class trangchu {
         p1.add(panel);
         
         JLabel jLabel=new JLabel();
+        ///doanh thu tổng/////////////////////////////////////////////////////////////////////////////////////////
         
+        
+        //phần quản lí account
+        JLabel acname=new JLabel("USERNAME: ");
+        acname.setBounds(50, 100, 100, 50);
+        JTextField act1= new JTextField();
+        act1.setBounds(130, 110, 150, 30);
+        JLabel acpass=new JLabel("PASSWORD: ");
+        acpass.setBounds(50, 150, 100, 50);
+        JTextField act2= new JTextField();
+        act2.setBounds(130, 160, 150, 30);
+        JTable actb=new JTable();
+        
+        DefaultTableModel model= new DefaultTableModel();
+        actb.setModel(model);
+        model.addColumn("USERNAME");
+        model.addColumn("PASSWORD");
+        JScrollPane sc=new JScrollPane(actb);
+        sc.setBounds(330,100,600 , 600);
+        
+        JLabel aca=new JLabel("A");
+        aca.setFont(new Font("Vẻdana", Font.PLAIN,100));
+        aca.setBounds(1100, 50, 70, 90);
+        JLabel acc1=new JLabel("C");
+        acc1.setFont(new Font("Vẻdana", Font.PLAIN,100));
+        acc1.setBounds(1095, 150, 85, 90);
+        JLabel acc2=new JLabel("C");
+        acc2.setFont(new Font("Vẻdana", Font.PLAIN,100));
+        acc2.setBounds(1095, 250, 85, 90);
+        JLabel aco=new JLabel("O");
+        aco.setFont(new Font("Vẻdana", Font.PLAIN,100));
+        aco.setBounds(1095, 350, 90, 90);
+        JLabel acu=new JLabel("U");
+        acu.setFont(new Font("Vẻdana", Font.PLAIN,100));
+        acu.setBounds(1100, 450, 85, 90);
+        JLabel acn=new JLabel("N");
+        acn.setFont(new Font("Vẻdana", Font.PLAIN,100));
+        acn.setBounds(1100, 550, 85, 90);
+        JLabel act=new JLabel("T");
+        act.setFont(new Font("Vẻdana", Font.PLAIN,100));
+        act.setBounds(1105, 650, 85, 90);
+        
+        p3.add(aca);
+        p3.add(acc1);
+        p3.add(acc2);
+        p3.add(aco);
+        p3.add(acu);
+        p3.add(acn);
+        p3.add(act);
+        
+        p3.add(sc);
+        p3.add(acname);
+        p3.add(act1);
+        p3.add(acpass);
+        p3.add(act2);
+        ///quản lí account///////////////////////////////////////////////////////////////////////////////////////
         JLabel l= new JLabel("Welcome admin to our store :))");
         l.setBounds(10,15,1000,200) ;
         l.setFont(new Font("Vẻdana", Font.PLAIN,50));
