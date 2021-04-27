@@ -234,7 +234,6 @@ public class trangchu {
         p1.setVisible(false);
         p2.setBackground(Color.yellow);
         p2.setVisible(false);
-        p3.setBackground(Color.red);
         p3.setVisible(false);
         p.setBounds (300,15,1225,815);
         p1.setBounds(300,15,1225,815);
