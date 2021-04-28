@@ -8,13 +8,15 @@ import java.sql.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import DLL.DLLlogin;
 
 /**
  *
  * @author Quoc Phu
  */
 public class Dangnhap {
-    Connection con;
+    DLLlogin dlllogin=new DLLlogin();
+    
    JFrame j= new JFrame();
         JLabel l=new JLabel("LOG IN");
         JPanel p= new JPanel();
@@ -64,7 +66,7 @@ public class Dangnhap {
                     JOptionPane.showMessageDialog(null,"Bạn chưa nhập thông tin tài khoản vào ô đăng nhập!!!!!!!!!");
                 }
                 else{
-                    if(dangnhap(e))
+                    if(dlllogin.dlllogin(t1.getText(), t2.getText()))
                     {
                         JOptionPane.showMessageDialog(null,"Đăng nhập thành công :)))))");
                         new trangchu();
@@ -83,25 +85,5 @@ public class Dangnhap {
         j.setBounds(500,150,450,350);
         j.setVisible(true);
     }
-    public boolean dangnhap(ActionEvent e){
-        try{
-       Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); 
-       String dbUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=QLBanHangD_A" ;
-        String username = "lamquocphu1309"; String password= "0704720250";
-         con=DriverManager.getConnection(dbUrl, username, password);
-        PreparedStatement pre=con.prepareStatement("select * from DangNhap where NAMEUSER=? and PASSWD=?");
-        pre.setString(1,t1.getText());
-        pre.setString(2,t2.getText());
-        pre.execute();
-        ResultSet rs= pre.getResultSet();
-        if(rs.next()){
-           // j.dispose();
-            //new trangchu();
-            return true;
-        }
-        
-       }catch(Exception ev){
-           System.err.println(ev.getMessage());}
-        return false;
-       }
+    
 }
