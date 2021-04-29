@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package Doanbanhang.GUI;
 import java.sql.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import DLL.DLLlogin;
+import Doanbanhang.DLL.DLLlogin;
 
 /**
  *

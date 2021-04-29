@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package Doanbanhang.GUI;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class trangchu {
     Calendar cal = Calendar.getInstance();
-
+    
     trangchu(){
         JFrame j=new JFrame("aaa");
         j.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -71,7 +71,7 @@ public class trangchu {
         
         
         
-        //phần doanh thu của tổng quán----------------------------------------------------------
+        //phần doanh thu của tổng quán//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////----------------------------------------------------------
         JLabel l1= new JLabel("DOANH THU CỦA CHUỖI");
         l1.setFont(new Font("Vẻdana", Font.PLAIN,50));
         l1.setBounds(330,0,1225,100);
@@ -116,7 +116,7 @@ public class trangchu {
         p1.add(panel);
         
         JLabel jLabel=new JLabel();
-        ///doanh thu tổng/////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////doanh thu tổng///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
         
         //phần quản lí account
@@ -129,6 +129,7 @@ public class trangchu {
         JTextField act2= new JTextField();
         act2.setBounds(130, 160, 150, 30);
         JTable actb=new JTable();
+        
         
         DefaultTableModel model= new DefaultTableModel();
         actb.setModel(model);
@@ -172,7 +173,7 @@ public class trangchu {
         p3.add(act1);
         p3.add(acpass);
         p3.add(act2);
-        ///quản lí account///////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////quản lí account/////////////////////////////////////////
         JLabel l= new JLabel("Welcome admin to our store :))");
         l.setBounds(10,15,1000,200) ;
         l.setFont(new Font("Vẻdana", Font.PLAIN,50));

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package Doanbanhang.GUI;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -11,7 +11,8 @@ import java.awt.event.ActionListener;
 import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import DTO.dulieukhachhang;
+import Doanbanhang.DTO.dulieukhachhang;
+
 /**
  *
  * @author huyhu

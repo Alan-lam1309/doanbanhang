@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package Doanbanhang.GUI;
 
 /**
  *
- * @author huyhu
+ * @author Quoc Phu
  */
-public class main {
-    public static void main(String[] args) {
-        
-        new Dangnhap();
-    }
+public class main1 {
+    public static void main(String[] args){
+    new Dangnhap();}
 }

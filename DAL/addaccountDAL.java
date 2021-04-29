@@ -5,18 +5,15 @@
  */
 package Doanbanhang.DAL;
 
-import java.awt.event.ActionEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
+import java.sql.DriverManager;
+
+import java.sql.Connection;
 /**
  *
  * @author Quoc Phu
  */
-public class loginDAL {
-
+public class addaccountDAL {
     Connection con;
 
     public boolean Connection() {
@@ -42,30 +39,6 @@ public class loginDAL {
             System.out.println(ec);
         }
     }
-
-    public boolean dangnhap(String user, String pass) {
-
-        if (Connection()) {
-            try {
-                PreparedStatement pre = con.prepareStatement("select * from DangNhap where NAMEUSER=? and PASSWD=?");
-                pre.setString(1, user);
-                pre.setString(2, pass);
-                pre.execute();
-                ResultSet rs = pre.getResultSet();
-                while (rs.next()) {
-                    return true;
-                }
-                
-            } catch (Exception e) {
-                System.out.println(e);   
-            }finally{
-                closeConnect();
-            } 
-        }
-        return false;
-    }
-
-   
-}
-
     
+
+}
