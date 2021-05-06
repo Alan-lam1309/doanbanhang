@@ -18,6 +18,7 @@ import Doanbanhang.DTO.dulieunhanvien;
  */
 public class quanlinhanvien extends JFrame implements ActionListener{
         JTable jt = new JTable();
+        
         Vector<dulieunhanvien> infor= new Vector<>();
         DefaultTableModel model = new DefaultTableModel();
         JLabel l1 = new JLabel("QUẢN LÍ NHÂN VIÊN");
@@ -49,7 +50,7 @@ public class quanlinhanvien extends JFrame implements ActionListener{
         JButton b5 = new JButton("THOÁT");
         
     quanlinhanvien(){
-        
+        setTitle("GUU Store");
         l1.setBounds(720, 30, 170, 70);
         add(l1);
         b1.setBounds(150,550,100,40);

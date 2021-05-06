@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Doanbanhang.DLL;
+package Doanbanhang.BLL;
 import Doanbanhang.DAL.loginDAL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

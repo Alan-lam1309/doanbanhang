@@ -5,15 +5,23 @@
  */
 package Doanbanhang.DAL;
 
-
 import java.sql.DriverManager;
-
+import java.sql.*;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import Doanbanhang.GUI.trangchu;
+import java.util.ArrayList;
+import java.util.Vector;
+import Doanbanhang.DTO.dulieuaccount;
+
 /**
  *
  * @author Quoc Phu
  */
 public class addaccountDAL {
+
     Connection con;
 
     public boolean Connection() {
@@ -31,14 +39,96 @@ public class addaccountDAL {
         }
         return false;
     }
-    public void closeConnect(){
-        try{
-            if(con!=null)
+
+    public void closeConnect() {
+        try {
+            if (con != null) {
                 con.close();
-        }catch(Exception ec){
+            }
+        } catch (Exception ec) {
             System.out.println(ec);
         }
     }
-    
 
+    /**
+     *
+     * @param a
+     */
+    public Vector<dulieuaccount> showlist() {
+        Vector<dulieuaccount> a = new Vector<dulieuaccount>();
+        if (Connection()) {
+            try {
+                Statement pre = con.createStatement();
+                pre.executeQuery("Select * from DangNhap");
+                ResultSet rs = pre.getResultSet();
+                while (rs.next()) {
+                    dulieuaccount dl = new dulieuaccount();
+                    dl.setName(rs.getString("NAMEUSER"));
+                    dl.setPass(rs.getString("PASSWD"));
+                    a.add(dl);
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+
+            } finally {
+                closeConnect();
+                
+            }
+        }
+        return a;
+    }
+
+    public boolean testaccount(String user) {
+
+        if (Connection()) {
+            try {
+                PreparedStatement pre = con.prepareStatement("select * from DangNhap where NAMEUSER=?");
+                pre.setString(1, user);
+                pre.execute();
+                ResultSet rs = pre.getResultSet();
+                while (rs.next()) {
+                    System.out.println("TRÙNG TÊN ĐĂNG NHẬP");
+                    return false;
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally {
+                closeConnect();
+            }
+        }
+        return true;
+    }
+
+    public void addAccount(String user, String pass) {
+        String add = "INSERT INTO DangNhap VALUES(?,?)";
+        if (Connection() ) {
+            try {
+                PreparedStatement pre = con.prepareStatement(add);
+                pre.setString(1, user);
+                pre.setString(2, pass);
+                pre.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally {
+                closeConnect();
+            }
+        }
+    }
+
+    public void deleteAccount(String user, String pass) {
+        String delete = "DELETE FROM DangNhap WHERE NAMEUSER=? AND PASSWD=?";
+        if (Connection()) {
+            try {
+                PreparedStatement pre = con.prepareStatement(delete);
+                pre.setString(1, user);
+                pre.setString(2, pass);
+                pre.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally {
+                closeConnect();
+            }
+        }
+    }
 }

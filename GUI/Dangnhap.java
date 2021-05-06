@@ -8,7 +8,7 @@ import java.sql.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import Doanbanhang.DLL.DLLlogin;
+import Doanbanhang.BLL.DLLlogin;
 
 /**
  *
@@ -17,7 +17,7 @@ import Doanbanhang.DLL.DLLlogin;
 public class Dangnhap {
     DLLlogin dlllogin=new DLLlogin();
     
-   JFrame j= new JFrame();
+   JFrame j= new JFrame("GUU Store");
         JLabel l=new JLabel("LOG IN");
         JPanel p= new JPanel();
         JPanel p1= new JPanel();
@@ -46,7 +46,7 @@ public class Dangnhap {
       
         
         
-        
+       
        
         
         submit.setBounds(110,230, 112, 30);
