@@ -76,4 +76,38 @@ public class qlnvDAL {
         }
        return a; 
     }
+    public void addnhanvien(String ID,String hovaten,String chucvu,String chinhanh,String sdt,String diachi, String luong) {
+        String add = "INSERT INTO nhanvien VALUES(?,?,?,?,?,?,?)";
+        if (Connection() ) {
+            try {
+                PreparedStatement pre = con.prepareStatement(add);
+                pre.setString(1, ID);
+                pre.setString(2, hovaten);
+                pre.setString(3,chucvu);
+                pre.setString(4,chinhanh);
+                pre.setString(5,sdt);
+                pre.setString(6,diachi);
+                pre.setString(7,luong);
+                pre.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally {
+                closeConnect();
+            }
+        }
+    }
+    public void deletenv(String ID) {
+        String delete = "DELETE FROM nhanvien WHERE ID=? ";
+        if (Connection()) {
+            try {
+                PreparedStatement pred = con.prepareStatement(delete);
+                pred.setString(1,ID);
+                pred.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            } finally {
+                closeConnect();
+            }
+        }
+    }
 }

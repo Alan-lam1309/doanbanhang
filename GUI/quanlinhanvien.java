@@ -157,7 +157,14 @@ public class quanlinhanvien extends JFrame {
                     tf5.getText());
             nhanvienList.add(s);
             model.addRow(new Object[]{s.getID(),s.gethovaten(),s.getchucvu(),s.getchinhanh(),s.getsdt(),s.getdiachi(),s.getluong()});
-    };
+            nvBLL.addnvBLL(tf1.getText(),
+                    tf2.getText(),
+                    cb1.getSelectedItem().toString(),
+                    cb2.getSelectedItem().toString(),
+                    tf3.getText(),
+                    tf4.getText(),
+                    tf5.getText());
+    }
     private void suaActionListener(ActionEvent e){
         int i = jt.getSelectedRow();
             if(i >= 0){
@@ -169,12 +176,17 @@ public class quanlinhanvien extends JFrame {
                 model.setValueAt(tf4.getText(), i, 5);
                 model.setValueAt(tf5.getText(), i, 6);
             }
-    };
+    }
     private void xoaActionListener(ActionEvent e){
+        int ques = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa khách hàng này không?", "Hủy", JOptionPane.YES_NO_OPTION);
+        if(ques==JOptionPane.YES_OPTION){
         int i = jt.getSelectedRow();
-            if(i>=0){
+            if (i >= 0) {
+                nvBLL.dltnv((String) jt.getModel().getValueAt(i,0));
                 model.removeRow(i);
+
             }
-    };
+        }
+    }
 }
    

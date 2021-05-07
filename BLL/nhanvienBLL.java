@@ -19,4 +19,10 @@ public class nhanvienBLL {
     public Vector<dulieunhanvien> showlistnv(){
         return qlnvAL.nhanvienList();
     }
+    public void addnvBLL(String ID,String hovaten,String chucvu,String chinhanh,String sdt,String diachi, String luong){
+        qlnvAL.addnhanvien(ID,hovaten,chucvu,chinhanh,sdt,diachi,luong);
+    }
+    public void dltnv(String ID){
+        qlnvAL.deletenv(ID);
+    }
 }
