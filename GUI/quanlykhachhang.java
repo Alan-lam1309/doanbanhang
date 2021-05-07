@@ -185,7 +185,9 @@ public class quanlykhachhang extends JFrame {
         if(ques==JOptionPane.YES_OPTION){
         int i = jt.getSelectedRow();
             if (i >= 0) {
+                khBLL.dltkh((String) jt.getModel().getValueAt(i,0));
                 model.removeRow(i);
+
             }
         }
     }

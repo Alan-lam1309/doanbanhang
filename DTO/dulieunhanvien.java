@@ -21,32 +21,50 @@ public class dulieunhanvien {
         this.diachi = diachi;
         this.luong= luong;
     }
-    
+    public dulieunhanvien(){
+        
+    }
     public String getID(){
         return ID;
+    }
+    public void setID(String ID) {
+        this.ID = ID;
     }
     public String gethovaten() {
         return hovaten;
     }
+    public void sethovaten(String hovaten) {
+        this.hovaten = hovaten;
+    }
     public String getchucvu(){
         return chucvu;
+    }
+    public void setchucvu(String chucvu) {
+        this.chucvu = chucvu;
     }
     public String getchinhanh(){
         return chinhanh;
     }
+    public void setchinhanh(String chinhanh) {
+        this.chinhanh = chinhanh;
+    }
     public String getsdt() {
        return sdt;
     }
-
+    public void setsdt(String sdt) {
+        this.sdt = sdt;
+    }
     public String getdiachi() {
         return diachi;
+    }
+    public void setdiachi(String diachi) {
+        this.diachi = diachi;
     }
 
     public String getluong() {
         return luong;
     }
-    
-
-    
-
+    public void setluong(String luong) {
+        this.luong = luong;
+    }
 }

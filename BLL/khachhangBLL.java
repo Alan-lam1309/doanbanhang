@@ -23,4 +23,7 @@ public class khachhangBLL {
     public void addkhBLL(String ID,String name,String email,String sdt,String diachi,String loaikh,String diemtichluy) {
         qlkhAL.addkhachhang(ID,name,email,sdt,diachi,loaikh,diemtichluy);
     }
+    public void dltkh(String ID){
+        qlkhAL.deletekh(ID);
+    }
 }

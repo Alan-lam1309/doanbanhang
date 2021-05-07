@@ -12,6 +12,6 @@ package Doanbanhang.GUI;
 public class main {
     public static void main(String[] args) {
         
-        new quanlykhachhang();    
+        new quanlinhanvien();    
     }
 }

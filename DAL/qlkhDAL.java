@@ -23,9 +23,6 @@ import Doanbanhang.DTO.dulieukhachhang;
 public class qlkhDAL {
     Connection con ;
     Vector<dulieukhachhang> customerList = new Vector<dulieukhachhang>();
-    public qlkhDAL(){
-        
-    }
     public boolean Connection() {
 
         try {
@@ -97,6 +94,20 @@ public class qlkhDAL {
                 pre.executeUpdate();
             } catch (Exception e) {
                 System.out.println(e);
+            } finally {
+                closeConnect();
+            }
+        }
+    }
+    public void deletekh(String ID) {
+        String delete = "DELETE FROM khachhang WHERE ID=? ";
+        if (Connection()) {
+            try {
+                PreparedStatement pred = con.prepareStatement(delete);
+                pred.setString(1,ID);
+                pred.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             } finally {
                 closeConnect();
             }
