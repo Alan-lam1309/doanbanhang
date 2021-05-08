@@ -131,5 +131,21 @@ public class addaccountDAL {
             }
         }
     }
+        public void updateAccount(String user1,String user2,String pass){
+        String update="UPDATE DangNhap SET NAMEUSER=?, PASSWD=? WHERE NAMEUSER=?";
+        if(Connection()){
+            try{
+                PreparedStatement prep =con.prepareStatement(update);
+                prep.setString(1,user2);
+                prep.setString(2,pass);
+                prep.setString(3,user1);
+                prep.executeUpdate();
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }finally{
+                closeConnect();
+            }
+        }
+    }
     
 }
