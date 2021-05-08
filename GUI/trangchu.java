@@ -12,11 +12,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.CubicCurve2D;
 import java.security.PKCS12Attribute;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Vector;
+import javax.lang.model.util.AbstractTypeVisitor14;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,6 +32,8 @@ public class trangchu {
 
     BLLaddaccount addBLL = new BLLaddaccount();
     Calendar cal = Calendar.getInstance();
+    int r;
+    String n, m;
 
     public trangchu() {
         disPlay();
@@ -174,6 +180,15 @@ public class trangchu {
         act.setFont(new Font("Vẻdana", Font.PLAIN, 100));
         act.setBounds(1105, 650, 85, 90);
 
+        actb.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                r = actb.getSelectedRow();
+                act1.setText((String) actb.getModel().getValueAt(r, 0));
+                act2.setText((String) actb.getModel().getValueAt(r, 1));
+            }
+        }
+        );
+
         JButton add = new JButton("ADD");
         add.setBounds(50, 250, 100, 30);
         p3.add(add);
@@ -185,9 +200,12 @@ public class trangchu {
                 Object[] row = {user, pass};
                 model.addRow(row);
                 addBLL.addacBLL(act1.getText(), act2.getText());
+                act1.setText("");
+                act2.setText("");
             }
         });
 
+        //act1.setText();
         JButton delete = new JButton("DELETE");
         delete.setBounds(180, 250, 100, 30);
         p3.add(delete);
@@ -197,12 +215,30 @@ public class trangchu {
                 int ques = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa account này không?", "Hủy", JOptionPane.YES_NO_OPTION);
                 if (ques == JOptionPane.YES_OPTION) {
                     int r = actb.getSelectedRow();
-                    if (r>=0) {
-                        String n= (String.valueOf(actb.getValueAt(r,0 )) );
-                        String m= (String.valueOf(actb.getValueAt(r,1 )) );
-                        addBLL.dltacDLL(n,m);
+                    if (r >= 0) {
+                        String n = (String) actb.getModel().getValueAt(r, 0);
+                        String m = (String) actb.getModel().getValueAt(r, 0);
+                        addBLL.dltacDLL(n, m);
                         model.removeRow(r);
                     }
+                }
+            }
+        });
+
+        JButton update = new JButton("UPDATE");
+        update.setBounds(120, 310, 100, 30);
+        p3.add(update);
+        update.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int ques = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa account này không?", "Hủy", JOptionPane.YES_NO_OPTION);
+                if (ques == JOptionPane.YES_OPTION) {
+                    String m = (String) actb.getModel().getValueAt(r, 0);
+                    addBLL.updacDLL(m, act1.getText(), act2.getText());
+                    model.setValueAt(act1.getText(), r, 0);
+                    model.setValueAt(act2.getText(), r, 1);
+                    act1.setText("");
+                    act2.setText("");
                 }
             }
         });
@@ -303,6 +339,22 @@ public class trangchu {
                 p.setVisible(true);
                 p2.setVisible(false);
                 p3.setVisible(false);
+            }
+
+            public void mousePressed(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            public void mouseReleased(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            public void mouseEntered(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            public void mouseExited(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
         b2.addActionListener(new ActionListener() {

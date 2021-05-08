@@ -102,14 +102,14 @@ public class addaccountDAL {
 
     public void addAccount(String user, String pass) {
         String add = "INSERT INTO DangNhap VALUES(?,?)";
-        if (Connection() ) {
+        if (Connection()) {
             try {
                 PreparedStatement pre = con.prepareStatement(add);
                 pre.setString(1, user);
                 pre.setString(2, pass);
                 pre.executeUpdate();
             } catch (Exception e) {
-                System.out.println(e);
+                System.out.println(e.getMessage());
             } finally {
                 closeConnect();
             }
@@ -117,18 +117,33 @@ public class addaccountDAL {
     }
 
     public void deleteAccount(String user, String pass) {
-        String delete = "DELETE FROM DangNhap WHERE NAMEUSER=? AND PASSWD=?";
+        String delete = "DELETE FROM DangNhap WHERE NAMEUSER=? ";
         if (Connection()) {
             try {
-                PreparedStatement pre = con.prepareStatement(delete);
-                pre.setString(1, user);
-                pre.setString(2, pass);
-                pre.executeUpdate();
+                PreparedStatement pred = con.prepareStatement(delete);
+                pred.setString(1, user);
+                pred.executeUpdate();
             } catch (Exception e) {
-                System.out.println(e);
+                System.out.println(e.getMessage());
             } finally {
                 closeConnect();
             }
         }
     }
+    public void updateAccount(String user1,String user2,String pass){
+        String update="UPDATE DangNhap SET NAMEUSER=?, PASSWD=? WHERE NAMEUSER=?";
+        if(Connection()){
+            try{
+                PreparedStatement prep =con.prepareStatement(update);
+                prep.setString(1,user2);
+                prep.setString(2,pass);
+                prep.setString(3,user1);
+                prep.executeUpdate();
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }finally{
+                closeConnect();
+            }
+        }
+    } 
 }
