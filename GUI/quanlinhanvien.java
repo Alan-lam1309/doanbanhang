@@ -12,17 +12,17 @@ import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import Doanbanhang.DTO.dulieunhanvien;
+import Doanbanhang.BLL.nhanvienBLL;
 /**
  *
  * @author huyhu
  */
-public class quanlinhanvien extends JFrame implements ActionListener{
+public class quanlinhanvien extends JFrame {
         JTable jt = new JTable();
-        
-        Vector<dulieunhanvien> infor= new Vector<>();
+        Vector<dulieunhanvien> nhanvienList= new Vector<>();
         DefaultTableModel model = new DefaultTableModel();
         JLabel l1 = new JLabel("QUẢN LÍ NHÂN VIÊN");
-       
+        nhanvienBLL nvBLL = new nhanvienBLL();
         
         JPanel p1 = new JPanel();
         JLabel l2 = new JLabel("ID");
@@ -50,7 +50,7 @@ public class quanlinhanvien extends JFrame implements ActionListener{
         JButton b5 = new JButton("THOÁT");
         
     quanlinhanvien(){
-        setTitle("GUU Store");
+        
         l1.setBounds(720, 30, 170, 70);
         add(l1);
         b1.setBounds(150,550,100,40);
@@ -89,11 +89,29 @@ public class quanlinhanvien extends JFrame implements ActionListener{
         add(b4);
         add(b5);
         
-        b1.addActionListener(this);
-        b2.addActionListener(this);
-        b3.addActionListener(this);
-        b5.addActionListener(this);      
-        
+        b1.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                themActionListener(e);
+                
+        }});
+        b2.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+            suaActionListener(e);
+        }});
+        b3.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+            xoaActionListener(e);
+                
+        }});
+        b5.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                thoatActionListener(e);
+                
+        }});
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setResizable(false);
         setLayout(null);
@@ -103,7 +121,6 @@ public class quanlinhanvien extends JFrame implements ActionListener{
     }
     public void hienthilist(){
         jt.setModel(model);
-        model.addColumn("STT");
         model.addColumn("ID");
         model.addColumn("HỌ VÀ TÊN");
         model.addColumn("CHỨC VỤ");
@@ -111,20 +128,45 @@ public class quanlinhanvien extends JFrame implements ActionListener{
         model.addColumn("SỐ ĐIỆN THOẠI");
         model.addColumn("ĐỊA CHỈ");
         model.addColumn("LƯƠNG NHẬN");
-        int i=0;
-      while(i <= infor.size()-1){
-           dulieunhanvien s = infor.get(i);
-           model.addRow(new Object[]{s.getID(),s.gethovaten(),s.getchucvu(),s.getchinhanh(),s.getsdt(),s.getdiachi(),s.getluong()
-            });
+        Vector<dulieunhanvien> nhanvienList = new Vector<dulieunhanvien>();
+        nhanvienList = nvBLL.showlistnv();
+        for (int i = 0; i < nhanvienList.size(); i++) {
+            dulieunhanvien nv = nhanvienList.get(i);
+            String ID = nv.getID();
+            String name = nv.gethovaten();
+            String chucvu = nv.getchucvu();
+            String chinhanh = nv.getchinhanh();
+            String sdt = nv.getsdt();
+            String diachi = nv.getdiachi();
+            String luong = nv.getluong();
+            Object[] row = {ID,name, chucvu,chinhanh, sdt, diachi, luong};
+            model.addRow(row);
+
         }
     }
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==b5){
-            dispose();
-        }
-        if(e.getSource()==b2){
-            int i = jt.getSelectedRow();
+    private void thoatActionListener(ActionEvent e){
+        dispose();
+    }
+    private void themActionListener(ActionEvent e){
+        dulieunhanvien s=new dulieunhanvien(tf1.getText(),
+                    tf2.getText(),
+                    cb1.getSelectedItem().toString(),
+                    cb2.getSelectedItem().toString(),
+                    tf3.getText(),
+                    tf4.getText(),
+                    tf5.getText());
+            nhanvienList.add(s);
+            model.addRow(new Object[]{s.getID(),s.gethovaten(),s.getchucvu(),s.getchinhanh(),s.getsdt(),s.getdiachi(),s.getluong()});
+            nvBLL.addnvBLL(tf1.getText(),
+                    tf2.getText(),
+                    cb1.getSelectedItem().toString(),
+                    cb2.getSelectedItem().toString(),
+                    tf3.getText(),
+                    tf4.getText(),
+                    tf5.getText());
+    }
+    private void suaActionListener(ActionEvent e){
+        int i = jt.getSelectedRow();
             if(i >= 0){
                 model.setValueAt(tf1.getText(),i,0);
                 model.setValueAt(tf2.getText(),i,1);
@@ -134,26 +176,17 @@ public class quanlinhanvien extends JFrame implements ActionListener{
                 model.setValueAt(tf4.getText(), i, 5);
                 model.setValueAt(tf5.getText(), i, 6);
             }
-        }
-        if(e.getSource()==b1){
-            dulieunhanvien s=new dulieunhanvien(tf1.getText(),
-                    tf2.getText(),
-                    cb1.getSelectedItem().toString(),
-                    cb2.getSelectedItem().toString(),
-                    tf3.getText(),
-                    tf4.getText(),
-                    tf5.getText());
-            infor.add(s);
-            int i = infor.size()-1;
-            model.addRow(new Object[]{++i,s.getID(),s.gethovaten(),s.getchucvu(),s.getchinhanh(),s.getsdt(),s.getdiachi(),s.getluong()});
-        }
-        if(e.getSource()==b3){
-            int i = jt.getSelectedRow();
-            if(i>=0){
+    }
+    private void xoaActionListener(ActionEvent e){
+        int ques = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa khách hàng này không?", "Hủy", JOptionPane.YES_NO_OPTION);
+        if(ques==JOptionPane.YES_OPTION){
+        int i = jt.getSelectedRow();
+            if (i >= 0) {
+                nvBLL.dltnv((String) jt.getModel().getValueAt(i,0));
                 model.removeRow(i);
+
             }
         }
     }
-
 }
    

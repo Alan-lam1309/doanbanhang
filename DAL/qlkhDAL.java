@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Doanbanhang.DAL;
+
 import java.sql.DriverManager;
 import java.sql.*;
 import java.sql.Connection;
@@ -13,14 +14,15 @@ import java.sql.SQLException;
 import Doanbanhang.GUI.trangchu;
 import java.util.ArrayList;
 import java.util.Vector;
-import Doanbanhang.DTO.dulieunhanvien;
+import Doanbanhang.DTO.dulieukhachhang;
+
 /**
  *
  * @author huyhu
  */
-public class qlnvDAL {
-    Connection con;
-    Vector<dulieunhanvien> nhanvienList = new Vector<dulieunhanvien>();
+public class qlkhDAL {
+    Connection con ;
+    Vector<dulieukhachhang> customerList = new Vector<dulieukhachhang>();
     public boolean Connection() {
 
         try {
@@ -36,6 +38,7 @@ public class qlnvDAL {
         }
         return false;
     }
+
     public void closeConnect() {
         try {
             if (con != null) {
@@ -45,24 +48,24 @@ public class qlnvDAL {
             System.out.println(ec);
         }
     }
-    public Vector<dulieunhanvien> nhanvienList() {
-        Vector<dulieunhanvien> a = new Vector<dulieunhanvien>();
+    public Vector<dulieukhachhang> customerList() {
+        Vector<dulieukhachhang> a = new Vector<dulieukhachhang>();
         if (Connection()) {
             try {
                 
                 Statement pre = con.createStatement();
-                pre.executeQuery("Select * from nhanvien");
+                pre.executeQuery("Select * from khachhang");
                 ResultSet rs=pre.getResultSet();
                 while (rs.next()) {
-                    dulieunhanvien nv = new dulieunhanvien();
-                    nv.setID(rs.getString("ID"));
-                    nv.sethovaten(rs.getString("hovaten"));
-                    nv.setchucvu(rs.getString("chucvu"));
-                    nv.setchinhanh(rs.getString("chinhanh"));
-                    nv.setsdt(rs.getString("sodienthoai"));
-                    nv.setdiachi(rs.getString("diachi"));
-                    nv.setluong(rs.getString("luong"));
-                    a.add(nv);
+                    dulieukhachhang kh = new dulieukhachhang();
+                    kh.setID(rs.getString("ID"));
+                    kh.setHovaten(rs.getString("Hovaten"));
+                    kh.setEmail("email");
+                    kh.setSodienthoai("sodienthoai");
+                    kh.setDiachi("diachi");
+                    kh.setLoaikhachhang("loaikhachhang");
+                    kh.setDiemtichluy("diemtichluy");
+                    a.add(kh);
                 }
                 
             } catch (Exception e) {
@@ -76,18 +79,18 @@ public class qlnvDAL {
         }
        return a; 
     }
-    public void addnhanvien(String ID,String hovaten,String chucvu,String chinhanh,String sdt,String diachi, String luong) {
-        String add = "INSERT INTO nhanvien VALUES(?,?,?,?,?,?,?)";
+    public void addkhachhang(String ID,String hovaten,String email,String sodienthoai,String diachi,String loaikh,String diemtichluy ) {
+        String add = "INSERT INTO khachhang VALUES(?,?,?,?,?,?,?)";
         if (Connection() ) {
             try {
                 PreparedStatement pre = con.prepareStatement(add);
                 pre.setString(1, ID);
                 pre.setString(2, hovaten);
-                pre.setString(3,chucvu);
-                pre.setString(4,chinhanh);
-                pre.setString(5,sdt);
-                pre.setString(6,diachi);
-                pre.setString(7,luong);
+                pre.setString(3,email);
+                pre.setString(4,sodienthoai);
+                pre.setString(5,diachi);
+                pre.setString(6,loaikh);
+                pre.setString(7,diemtichluy);
                 pre.executeUpdate();
             } catch (Exception e) {
                 System.out.println(e);
@@ -96,8 +99,8 @@ public class qlnvDAL {
             }
         }
     }
-    public void deletenv(String ID) {
-        String delete = "DELETE FROM nhanvien WHERE ID=? ";
+    public void deletekh(String ID) {
+        String delete = "DELETE FROM khachhang WHERE ID=? ";
         if (Connection()) {
             try {
                 PreparedStatement pred = con.prepareStatement(delete);
