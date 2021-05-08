@@ -35,9 +35,9 @@ public class quanlinhanvien extends JFrame {
         
         JTextField tf1 = new JTextField();
         JTextField tf2 = new JTextField();
-        String cv[]={"CEO","Quản lí","Nhân Viên Fulltime","Nhân Viên Bán Thời Gian","Mẫu Chụp Hình"};
+        String cv[]={" ","CEO","Quản lí","Nhân Viên Fulltime","Nhân Viên Bán Thời Gian","Mẫu Chụp Hình"};
         JComboBox cb1 = new JComboBox(cv);
-        String cn[]= {"Quận 10","Quận 1","Quận Gò Vấp","Quận 9"};
+        String cn[]= {" ","Quận 10","Quận 1","Quận Gò Vấp","Quận 9"};
         JComboBox cb2 = new JComboBox(cn);
         JTextField tf3 = new JTextField();
         JTextField tf4 = new JTextField();
@@ -148,6 +148,10 @@ public class quanlinhanvien extends JFrame {
         dispose();
     }
     private void themActionListener(ActionEvent e){
+        if(tf1.getText().equals(" ")||tf2.getText().equals(" ")||cb1.getSelectedItem().toString().equals(" ")||cb2.getSelectedItem().toString().equals(" ")||tf3.getText().equals(" ")||tf4.getText().equals(" ")||tf5.getText().equals(" "))
+                    JOptionPane.showMessageDialog(null,"Bạn chưa nhập đủ thông tin!!!!!!!!!");
+            
+        else{
         dulieunhanvien s=new dulieunhanvien(tf1.getText(),
                     tf2.getText(),
                     cb1.getSelectedItem().toString(),
@@ -164,6 +168,7 @@ public class quanlinhanvien extends JFrame {
                     tf3.getText(),
                     tf4.getText(),
                     tf5.getText());
+        }
     }
     private void suaActionListener(ActionEvent e){
         int i = jt.getSelectedRow();

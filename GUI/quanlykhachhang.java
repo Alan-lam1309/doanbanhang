@@ -45,7 +45,7 @@ public class quanlykhachhang extends JFrame {
     JTextField tf1 = new JTextField();
     JTextField tf2 = new JTextField();
     JTextField tf6 = new JTextField();
-    String cn[] = {"Quận 10", "Quận 1", "Quận Gò Vấp", "Quận 9"};
+    String cn[] = {" ","Thường niên", "Bạc", "Vàng", "VIP"};
     JComboBox cb2 = new JComboBox(cn);
     JTextField tf3 = new JTextField();
     JTextField tf4 = new JTextField();
@@ -160,11 +160,15 @@ public class quanlykhachhang extends JFrame {
         dispose();
     }
     private void themActionListener(ActionEvent e){
-        dulieukhachhang s;
+        if(tf1.getText().equals(" ")||tf2.getText().equals(" ")||tf6.getText().equals(" ")||tf4.getText().equals(" ")||tf3.getText().equals(" ")||cb2.getSelectedItem().toString().equals(" ")||tf5.getText().equals(" ")){
+            JOptionPane.showMessageDialog(null,"Bạn chưa nhập đủ thông tin!!!!!!!!!");
+        }
+        else{dulieukhachhang s;
             s = new dulieukhachhang(tf1.getText(), tf2.getText(), tf6.getText(), tf4.getText(), tf3.getText(), cb2.getSelectedItem().toString(), tf5.getText());
             customerList.add(s);
             model.addRow(new Object[]{s.getID(), s.getHovaten(), s.getEmail(), s.getSodienthoai(), s.getDiachi(), s.getLoaikhachhang(), s.getDiemtichluy()});
             akhBLL.addkhBLL(tf1.getText(), tf2.getText(), tf6.getText(), tf4.getText(), tf3.getText(), cb2.getSelectedItem().toString(), tf5.getText());
+        }
     }
     private void suaActionListener(ActionEvent e){
         int i = jt.getSelectedRow();

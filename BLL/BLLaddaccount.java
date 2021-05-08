@@ -18,7 +18,4 @@ public class BLLaddaccount {
     public void dltacDLL(String user,String pass){
         acDAL.deleteAccount(user, pass);
     }
-    public void updacDLL(String user1, String user2,String pass){
-        acDAL.updateAccount(user1, user2, pass);
-    }
 }
