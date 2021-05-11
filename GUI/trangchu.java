@@ -31,7 +31,8 @@ public class trangchu {
     BLLaddaccount addBLL = new BLLaddaccount();
     Calendar cal = Calendar.getInstance();
     int r;
-    String n,m;
+    String n, m;
+
     public trangchu() {
         disPlay();
     }
@@ -53,11 +54,11 @@ public class trangchu {
 
         JButton b1 = new JButton("Quản lí Cửa Hàng", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (8) (2).jpg"));
         b1.setFont(new Font("Vẻdana", Font.PLAIN, 21));
-        JButton b2 = new JButton("Quản lí Doanh Thu");
+        JButton b2 = new JButton("Quản lí Doanh Thu", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\images (3).png"));
         b2.setFont(new Font("Vẻdana", Font.PLAIN, 21));
-        JButton b3 = new JButton("Quản lí Hàng Hóa");
+        JButton b3 = new JButton("Quản lí Hàng Hóa", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\images (4).png"));
         b3.setFont(new Font("Vẻdana", Font.PLAIN, 21));
-        JButton b4 = new JButton("Quản lí Account");
+        JButton b4 = new JButton("Quản lí Account", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (9).png"));
         b4.setFont(new Font("Vẻdana", Font.PLAIN, 21));
         b1.setBounds(0, 100, 301, 100);
         b2.setBounds(0, 250, 301, 100);
@@ -65,22 +66,22 @@ public class trangchu {
         b4.setBounds(0, 550, 301, 100);
         j.add(b4);
 
-        JButton nvq1 = new JButton("Nhân viên", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\aaa.jpg"));
-        JButton hhq1 = new JButton("Hàng hóa");
-        JButton dtq1 = new JButton("Doanh thu");
-        JButton hdq1 = new JButton("Hóa đơn");
-        JButton nvq2 = new JButton("Nhân viên");
-        JButton hhq2 = new JButton("Hàng hóa");
-        JButton dtq2 = new JButton("Doanh thu");
-        JButton hdq2 = new JButton("Hóa đơn");
-        JButton nvq3 = new JButton("Nhân viên");
-        JButton hhq3 = new JButton("Hàng hóa");
-        JButton dtq3 = new JButton("Doanh thu");
-        JButton hdq3 = new JButton("Hóa đơn");
-        JButton nvq4 = new JButton("Nhân viên");
-        JButton hhq4 = new JButton("Hàng hóa");
-        JButton dtq4 = new JButton("Doanh thu");
-        JButton hdq4 = new JButton("Hóa đơn");
+        JButton nvq1 = new JButton("Nhân viên", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (4).png"));
+        JButton hhq1 = new JButton("Hàng hóa", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (2) (2).jpg"));
+        JButton dtq1 = new JButton("Doanh thu", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\images (1).png"));
+        JButton hdq1 = new JButton("Hóa đơn", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (3) (2).jpg"));
+        JButton nvq2 = new JButton("Nhân viên", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (4).png"));
+        JButton hhq2 = new JButton("Hàng hóa", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (2) (2).jpg"));
+        JButton dtq2 = new JButton("Doanh thu", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\images (1).png"));
+        JButton hdq2 = new JButton("Hóa đơn", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (3) (2).jpg"));
+        JButton nvq3 = new JButton("Nhân viên", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (4).png"));
+        JButton hhq3 = new JButton("Hàng hóa", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (2) (2).jpg"));
+        JButton dtq3 = new JButton("Doanh thu", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\images (1).png"));
+        JButton hdq3 = new JButton("Hóa đơn", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (3) (2).jpg"));
+        JButton nvq4 = new JButton("Nhân viên", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (4).png"));
+        JButton hhq4 = new JButton("Hàng hóa", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (2) (2).jpg"));
+        JButton dtq4 = new JButton("Doanh thu", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\images (1).png"));
+        JButton hdq4 = new JButton("Hóa đơn", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (3) (2).jpg"));
 
         //phần doanh thu của tổng quán//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////----------------------------------------------------------
         JLabel l1 = new JLabel("DOANH THU CỦA CHUỖI");
@@ -130,11 +131,11 @@ public class trangchu {
         //////////////////////////////////////////////////////////////////////////////////////doanh thu tổng///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         //phần quản lí account
-        JLabel acname = new JLabel("USERNAME: ");
+        JLabel acname = new JLabel("* USERNAME: ");
         acname.setBounds(50, 100, 100, 50);
         JTextField act1 = new JTextField();
         act1.setBounds(130, 110, 150, 30);
-        JLabel acpass = new JLabel("PASSWORD: ");
+        JLabel acpass = new JLabel("* PASSWORD: ");
         acpass.setBounds(50, 150, 100, 50);
         JTextField act2 = new JTextField();
         act2.setBounds(130, 160, 150, 30);
@@ -177,7 +178,7 @@ public class trangchu {
         act.setFont(new Font("Vẻdana", Font.PLAIN, 100));
         act.setBounds(1105, 650, 85, 90);
 
-           actb.addMouseListener(new MouseAdapter() {
+        actb.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 r = actb.getSelectedRow();
                 act1.setText((String) actb.getModel().getValueAt(r, 0));
@@ -185,22 +186,25 @@ public class trangchu {
             }
         }
         );
-        JButton add = new JButton("ADD");
-        add.setBounds(50, 250, 100, 30);
+        JButton add = new JButton("ADD", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\add (2).jpg"));
+        add.setBounds(50, 250, 120, 30);
         p3.add(add);
         add.addActionListener(new ActionListener() {
             @Override
+
             public void actionPerformed(ActionEvent e) {
-                String user = act1.getText();
-                String pass = act2.getText();
-                Object[] row = {user, pass};
-                model.addRow(row);
-                addBLL.addacBLL(act1.getText(), act2.getText());
+                if (!act1.getText().equals("") || !act2.getText().equals("")) {
+                    String user = act1.getText();
+                    String pass = act2.getText();
+                    Object[] row = {user, pass};
+                    model.addRow(row);
+                    addBLL.addacBLL(act1.getText(), act2.getText());
+                }
             }
         });
 
-        JButton delete = new JButton("DELETE");
-        delete.setBounds(180, 250, 100, 30);
+        JButton delete = new JButton("DELETE", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\images (6) (2).jpg"));
+        delete.setBounds(180, 250, 120, 30);
         p3.add(delete);
         delete.addActionListener(new ActionListener() {
             @Override
@@ -208,33 +212,34 @@ public class trangchu {
                 int ques = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa account này không?", "Hủy", JOptionPane.YES_NO_OPTION);
                 if (ques == JOptionPane.YES_OPTION) {
                     int r = actb.getSelectedRow();
-                    if (r>=0) {
-                        String n= (String.valueOf(actb.getValueAt(r,0 )) );
-                        String m= (String.valueOf(actb.getValueAt(r,1 )) );
-                        addBLL.dltacDLL(n,m);
+                    if (r >= 0) {
+                        String n = (String.valueOf(actb.getValueAt(r, 0)));
+                        String m = (String.valueOf(actb.getValueAt(r, 1)));
+                        addBLL.dltacDLL(n, m);
                         model.removeRow(r);
                     }
                 }
             }
         });
-          JButton update = new JButton("UPDATE");
-        update.setBounds(120, 310, 100, 30);
+        JButton update = new JButton("UPDATE", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\images (7) (2).jpg"));
+        update.setBounds(110, 310, 120, 30);
         p3.add(update);
         update.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int ques = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa account này không?", "Hủy", JOptionPane.YES_NO_OPTION);
-                if (ques == JOptionPane.YES_OPTION) {
-                    String m = (String) actb.getModel().getValueAt(r, 0);
-                    addBLL.updacDLL(m, act1.getText(), act2.getText());
-                    model.setValueAt(act1.getText(), r, 0);
-                    model.setValueAt(act2.getText(), r, 1);
-                    act1.setText("");
-                    act2.setText("");
+                if (!act1.getText().equals("") || !act2.getText().equals("")) {
+                    int ques = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn update không?", "Hủy", JOptionPane.YES_NO_OPTION);
+                    if (ques == JOptionPane.YES_OPTION) {
+                        String m = (String) actb.getModel().getValueAt(r, 0);
+                        addBLL.updacDLL(m, act1.getText(), act2.getText());
+                        model.setValueAt(act1.getText(), r, 0);
+                        model.setValueAt(act2.getText(), r, 1);
+                        act1.setText("");
+                        act2.setText("");
+                    }
                 }
             }
         });
-        
 
         p3.add(aca);
         p3.add(acc1);
@@ -259,8 +264,20 @@ public class trangchu {
         lchinhanh1.setBounds(200, 50, 500, 50);
         p.add(lchinhanh1);
         p.add(nvq1);
+        nvq1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new quanlinhanvien();
+            }
+        });
         p.add(hhq1);
         p.add(hdq1);
+        hdq1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new quanlyhoadon();
+            }
+
+        });
         p.add(dtq1);
         nvq1.setBounds(110, 150, 180, 70);
         hhq1.setBounds(110, 240, 180, 70);
@@ -272,8 +289,20 @@ public class trangchu {
         lchinhanh2.setBounds(730, 50, 500, 50);
         p.add(lchinhanh2);
         p.add(nvq2);
+        nvq2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new quanlinhanvien();
+            }
+        });
         p.add(hhq2);
         p.add(hdq2);
+        hdq2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new quanlyhoadon();
+            }
+
+        });
         p.add(dtq2);
         nvq2.setBounds(110, 560, 180, 70);
         hhq2.setBounds(110, 650, 180, 70);
@@ -285,8 +314,20 @@ public class trangchu {
         lchinhanh3.setBounds(160, 450, 500, 50);
         p.add(lchinhanh3);
         p.add(nvq3);
+        nvq3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new quanlinhanvien();
+            }
+        });
         p.add(hhq3);
         p.add(hdq3);
+        hdq3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new quanlyhoadon();
+            }
+
+        });
         p.add(dtq3);
         nvq3.setBounds(650, 150, 180, 70);
         hhq3.setBounds(650, 240, 180, 70);
@@ -298,8 +339,20 @@ public class trangchu {
         lchinhanh4.setBounds(730, 450, 500, 50);
         p.add(lchinhanh4);
         p.add(nvq4);
+        nvq4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new quanlinhanvien();
+            }
+        });
         p.add(hhq4);
         p.add(hdq4);
+        hdq4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new quanlyhoadon();
+            }
+
+        });
         p.add(dtq4);
         nvq4.setBounds(650, 560, 180, 70);
         hhq4.setBounds(650, 650, 180, 70);
