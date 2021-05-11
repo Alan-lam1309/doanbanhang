@@ -6,6 +6,7 @@
 package Doanbanhang.DAL;
 
 
+import Doanbanhang.DTO.dulieunhanvien;
 import java.util.Vector;
 import java.sql.*;
 import java.sql.Statement;
@@ -19,10 +20,8 @@ import java.util.Scanner;
  */
 
 public class quanlithongkeDAL {
-    public Scanner sc = new Scanner(System.in);
-    connect openconnect = new connect();
-    Connection con = openconnect.connectsql();
-    
+   Connection con;
+    Vector<dulieunhanvien> nhanvienList = new Vector<dulieunhanvien>();
     public boolean Connection() {
 
         try {
@@ -38,8 +37,6 @@ public class quanlithongkeDAL {
         }
         return false;
     }
-
-    
     public void closeConnect() {
         try {
             if (con != null) {
@@ -49,32 +46,37 @@ public class quanlithongkeDAL {
             System.out.println(ec);
         }
     }
-
-
-
-    public Vector<dulieuthongke> DisPlay() {
-        Vector<dulieuthongke> thongke = new Vector<>();;
+    
+    public Vector<dulieuthongke> hoadonlist() {
+        Vector<dulieuthongke> b = new Vector<dulieuthongke>();
         if (Connection()) {
-        try {
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM hoadon");
-            while (rs.next()) {
+            try {
+                
+                Statement pre = con.createStatement();
+                pre.executeQuery("Select * from hoadon");
+                ResultSet rs=pre.getResultSet();
+                while (rs.next()) {
+                    dulieuthongke tk  = new dulieuthongke();
+                    tk.setID(rs.getString("ID"));
+                    tk.setMaHD(rs.getString("MaHD"));
+                    tk.setNgayXuat(rs.getString("NgayXuat"));
+                    tk.setKhachHang(rs.getString("KhachHang"));
+                    tk.setTongTien(rs.getString("TongTien"));
+                    tk.setGiamGia(rs.getString("GiamGia"));
+                    tk.setThanhTien(rs.getString("ThanhTien"));
+                    b.add(tk);
+                }
+                
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                   
 
-        dulieuthongke tk=new dulieuthongke
-        (rs.getString("ID"),rs.getString("MSHĐ"),rs.getString("NgayXuat"),rs.getString("KhachHang"),rs.getString("TongTien"),rs.getString("GiamGia"),rs.getString("ThanhTien"));
-                    thongke.add(tk);
-        }
-        }catch (SQLException e) {
-            System.err.println(e.getMessage());
-                   } 
-        finally {
+            } finally {
                 closeConnect();
                 
             }
-        
-        
-    } 
-        return thongke;
+        }
+       return b; 
     }
   
     public void addhoadon(String ID,String MaHD, String NgayXuat,String KhachHang,String TongTien,String GiamGia,String ThanhTien ) {
@@ -99,6 +101,45 @@ public class quanlithongkeDAL {
     }
     public void deletehoadon (String ID) {
         String delete = "DELETE FROM khachhang WHERE ID=? ";
+        if (Connection()) {
+            try {
+                PreparedStatement pred = con.prepareStatement(delete);
+                pred.setString(1,ID);
+                pred.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            } finally {
+                closeConnect();
+            }
+        }
+    }
+
+
+
+    
+    
+    public void addnhanvien(String ID,String hovaten,String chucvu,String chinhanh,String sdt,String diachi, String luong) {
+        String add = "INSERT INTO nhanvien VALUES(?,?,?,?,?,?,?)";
+        if (Connection() ) {
+            try {
+                PreparedStatement pre = con.prepareStatement(add);
+                pre.setString(1, ID);
+                pre.setString(2, hovaten);
+                pre.setString(3,chucvu);
+                pre.setString(4,chinhanh);
+                pre.setString(5,sdt);
+                pre.setString(6,diachi);
+                pre.setString(7,luong);
+                pre.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally {
+                closeConnect();
+            }
+        }
+    }
+    public void deletenv(String ID) {
+        String delete = "DELETE FROM nhanvien WHERE ID=? ";
         if (Connection()) {
             try {
                 PreparedStatement pred = con.prepareStatement(delete);

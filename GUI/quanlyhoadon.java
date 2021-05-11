@@ -9,6 +9,7 @@ package Doanbanhang.GUI;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import Doanbanhang.BLL.khachhangBLL;
 import Doanbanhang.DAL.connect;
 import java.awt.GridLayout;
 import javax.swing.*;
@@ -19,6 +20,7 @@ import java.awt.event.*;
 import java.util.Vector;
 import javax.swing.table.TableModel;
 import Doanbanhang.DAL.quanlithongkeDAL;
+import Doanbanhang.DTO.dulieukhachhang;
 import Doanbanhang.DTO.dulieuthongke;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -157,7 +159,7 @@ public class quanlyhoadon {
         b5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                           btnThoatActionPerformed (e);
+                           f.dispose();
             }
         });
         
@@ -253,9 +255,7 @@ public class quanlyhoadon {
            }
            
            
-            public void btnThoatActionPerformed (ActionEvent evt){  
-                System.exit(0);}
-          
+            
          public void filltable()
          {
              quanlithongkeDAL getdata=new quanlithongkeDAL();
@@ -267,4 +267,228 @@ public class quanlyhoadon {
          }
            
          
+}
+
+
+
+
+
+
+
+package Doanbanhang.GUI;
+
+import Doanbanhang.BLL.khachhangBLL;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Vector;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import Doanbanhang.DTO.dulieukhachhang;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import Doanbanhang.DAL.qlkhDAL;
+import Doanbanhang.BLL.khachhangBLL;
+import Doanbanhang.DTO.dulieuthongke;
+import java.awt.event.*;
+
+
+/**
+ *
+ * @author huyhu
+ */
+public class quanlyhoadon extends JFrame {
+
+    JTable jt = new JTable();
+    Vector<dulieuthongke> hoadonlist = new Vector<dulieuthongke>();
+    DefaultTableModel model = new DefaultTableModel();
+    thongkebll tkBLL = new thongkebll();
+    
+    JPanel p1 = new JPanel();
+    JLabel l1 = new JLabel("Số Hóa Đơn Trong Ngày :");
+    JLabel l2 = new JLabel("Mã Đơn Hàng :");
+    JLabel l3 = new JLabel("Ngày Xuất Hóa Đơn :");
+    JLabel l4 = new JLabel("Loại Khách Hàng :");
+    JLabel l5 = new JLabel("Tổng Tiền Hàng :");
+    JLabel l6 = new JLabel("Giảm Giá :");
+    JLabel l7 = new JLabel("Tổng Tiền Sau Giảm Giá :");
+
+    JTextField tf1 = new JTextField();
+    JTextField tf2 = new JTextField();
+    JTextField tf3 = new JTextField();
+    JTextField tf4 = new JTextField();
+    JTextField tf5 = new JTextField();
+    JTextField tf6 = new JTextField();
+    JTextField tf7 = new JTextField();
+    
+    JButton b1 = new JButton("THÊM");
+    JButton b2 = new JButton("SỬA");
+    JButton b3 = new JButton("XÓA");
+    JButton b4 = new JButton("THOÁT");
+
+ 
+    quanlyhoadon() {
+
+        b1.setBounds(150, 550, 100, 40);
+        b2.setBounds(400, 550, 100, 40);
+        b3.setBounds(150, 600, 100, 40);
+        b4.setBounds(400, 600, 100, 40);
+
+        p1.add(l1);
+        p1.add(tf1);
+        p1.add(l2);
+        p1.add(tf2);
+        p1.add(l3);
+        p1.add(tf3);
+        p1.add(l4);
+        p1.add(tf4);
+        p1.add(l5);
+        p1.add(tf5);
+        p1.add(l6);
+        p1.add(tf6);
+        p1.add(l7);
+        p1.add(tf7);
+
+        p1.setBounds(100, 100, 500, 400);
+        p1.setLayout(new GridLayout(7, 2, 10, 10));
+
+        JScrollPane sp = new JScrollPane(jt);
+        sp.setBounds(650, 100, 850, 650);
+
+        add(sp);
+        add(p1);
+        add(b1);
+        add(b2);
+        add(b3);
+        add(b4);
+        hienthilist();
+         jt.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                int r = jt.getSelectedRow();
+                tf1.setText((String) jt.getModel().getValueAt(r, 0));
+                tf2.setText((String) jt.getModel().getValueAt(r, 1));
+                tf3.setText((String) jt.getModel().getValueAt(r, 2));
+                tf4.setText((String) jt.getModel().getValueAt(r, 3));
+                tf5.setText((String) jt.getModel().getValueAt(r, 4));
+                tf6.setSelectedItem((String) jt.getModel().getValueAt(r, 5));
+                tf7.setText((String) jt.getModel().getValueAt(r, 6));
+            }
+        }
+        );
+
+        b1.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                themActionListener(e);
+                
+        }});
+        b2.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+            suaActionListener(e);
+        }});
+        b3.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+            xoaActionListener(e);
+                
+        }});
+        b4.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                thoatActionListener(e);
+        }});       
+
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setResizable(false);
+        setLayout(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+
+    }
+
+    public void hienthilist() {
+        jt.setModel(model);
+        model.addColumn("SĐH");
+        model.addColumn("MSHĐ");
+        model.addColumn("Ngày Xuất");
+        model.addColumn("Khách Hàng");
+        model.addColumn("Tổng Tiền");
+        model.addColumn("Giảm Giá");
+        model.addColumn("Thành Tiền");
+        Vector<dulieuthongke> dltkVector = new Vector<dulieuthongke>();
+        dltkVector = tkBLL.showlistkh();
+        for (int i = 0; i < dltkVector.size(); i++) {
+            dulieuthongke s = dltkVector.get(i);
+            String ID = s.getID();
+            String name = s.getMaHD();
+            String email = s.getNgayXuat();
+            String sdt = s.getKhachHang();
+            String diachi = s.getTongTien();
+            String loaikh = s.getGiamGia();
+            String diemtichluy = s.getThanhTien();
+            Object[] row = {ID,MaHD, NgayXuat, KhachHang, TongTien, GiamGia, ThanhTien};
+            model.addRow(row);
+
+        }
+
+    }
+    private void thoatActionListener(ActionEvent e){
+        dispose();
+    }
+    private void themActionListener(ActionEvent e){
+        if(tf1.getText().equals(" ")||tf2.getText().equals(" ")||tf3.getText().equals(" ")||tf4.getText().equals(" ")||tf5.getText().equals(" ")||tf6.getText().equals(" ")||tf7.getText().equals(" ")){
+            JOptionPane.showMessageDialog(null,"Bạn chưa nhập đủ thông tin!!!!!!!!!");
+        }
+        else{dulieuthongke s = new dulieuthongke(tf1.getText(),
+                tf2.getText(),
+                tf3.getText(),
+                tf4.getText(),
+                tf5.getText(),
+                tf6.getText(),
+                tf7.getText());
+            customerList.add(s);
+            model.addRow(new Object[]{s.getID(), s.getMaHD(), s.getNgayXuat(), s.getKhachHang(), s.getTongTien(), s.getGiamGia(), s.getThanhTien()});
+            khBLL.addkhBLL(tf1.getText(),
+                    tf2.getText(),
+                    tf3.getText(),
+                    tf4.getText(),
+                    tf5.getText(),
+                    tf6.getText(),
+                    tf7.getText());
+        }
+    }
+    private void suaActionListener(ActionEvent e){
+         int ques = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn update này không?", "Hủy", JOptionPane.YES_NO_OPTION);
+         int i = jt.getSelectedRow();
+         if (ques == JOptionPane.YES_OPTION && i >=0) {
+                String m = (String) jt.getModel().getValueAt(i, 0);
+                model.setValueAt(tf1.getText(), i, 0);
+                model.setValueAt(tf2.getText(), i, 1);
+                model.setValueAt(tf3.getText(), i, 2);
+                model.setValueAt(tf4.getText(), i, 3);
+                model.setValueAt(tf5.getText(), i, 4);
+                model.setValueAt(tf6.getText(), i, 5);
+                model.setValueAt(tf7.getText(), i, 6);
+                khBLL.updhvtkh( tf1.getText(), tf2.getText(),tf3.getText(),tf4.getText(),tf5.getText(),tf6.getText(),tf7.getText());
+
+            
+            }
+    }
+    private void xoaActionListener(ActionEvent e)
+    {
+        int ques = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa khách hàng này không?", "Hủy", JOptionPane.YES_NO_OPTION);
+        if(ques==JOptionPane.YES_OPTION){
+        int i = jt.getSelectedRow();
+            if (i >= 0) {
+                tkBLL.dlttk((String) jt.getModel().getValueAt(i,0));
+                model.removeRow(i);
+
+            }
+        }
+    }
+    
 }

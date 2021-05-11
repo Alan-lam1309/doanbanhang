@@ -40,4 +40,31 @@ public class dulieuthongke {
         {
             return ThanhTien;
         }
+            public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public void setMaHD(String MaHD) {
+        this.MaHD = MaHD;
+    }
+
+    public void setNgayXuat(String NgayXuat) {
+        this.NgayXuat = NgayXuat;
+    }
+
+    public void setKhachHang(String KhachHang) {
+        this.KhachHang = KhachHang;
+    }
+
+    public void setTongTien(String TongTien) {
+        this.TongTien = TongTien;
+    }
+
+    public void setGiamGia(String GiamGia) {
+        this.GiamGia = GiamGia;
+    }
+
+    public void setThanhTien(String ThanhTien) {
+        this.ThanhTien = ThanhTien;
+    }
 }
