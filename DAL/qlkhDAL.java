@@ -24,7 +24,6 @@ public class qlkhDAL {
     Connection con ;
     Vector<dulieukhachhang> customerList = new Vector<dulieukhachhang>();
     public boolean Connection() {
-
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String dbUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=QLBanHangD_A";
@@ -59,12 +58,12 @@ public class qlkhDAL {
                 while (rs.next()) {
                     dulieukhachhang kh = new dulieukhachhang();
                     kh.setID(rs.getString("ID"));
-                    kh.setHovaten(rs.getString("Hovaten"));
-                    kh.setEmail("email");
-                    kh.setSodienthoai("sodienthoai");
-                    kh.setDiachi("diachi");
-                    kh.setLoaikhachhang("loaikhachhang");
-                    kh.setDiemtichluy("diemtichluy");
+                     kh.setHovaten(rs.getString("Hovaten"));
+                    kh.setEmail(rs.getString("email"));
+                    kh.setSodienthoai(rs.getString("sodienthoai"));
+                    kh.setDiachi(rs.getString("diachi"));
+                    kh.setLoaikhachhang(rs.getString("loaikhachhang"));
+                    kh.setDiemtichluy(rs.getString("diemtichluy"));
                     a.add(kh);
                 }
                 
@@ -113,4 +112,25 @@ public class qlkhDAL {
             }
         }
     }
+    public void updatehovatenkhachhang(String ID1,String ID2,String ten,String place,String sdt,String loai,String diem){
+        String update="UPDATE khachhang SET ID=?,Hovaten=?,diachi=?,sodienthoai=?,diemtichluy=? WHERE ID=?";
+        if(Connection()){
+            try{
+                PreparedStatement prep =con.prepareStatement(update);
+                prep.setString(1,ID2);
+                prep.setString(2,ten);
+                prep.setString(3,place);
+                prep.setString(4,sdt);
+                prep.setString(6,diem);
+                prep.setString(7,ID1);
+                prep.executeUpdate();
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }finally{
+                closeConnect();
+            }
+        }
+    }
+   
+    
 }

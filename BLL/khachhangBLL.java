@@ -26,4 +26,7 @@ public class khachhangBLL {
     public void dltkh(String ID){
         qlkhAL.deletekh(ID);
     }
+    public void updhvtkh(String ID1,String ID2,String ten,String place,String sdt,String loai,String diem ){
+        qlkhAL.updatehovatenkhachhang(ID1,ID2,ten,place,sdt,loai,diem);
+    }
 }
