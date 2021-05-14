@@ -11,6 +11,9 @@ public class BLLaddaccount {
     public Vector<dulieuaccount> showlist() {
         return acDAL.showlist();
     }
+    public boolean test(String user){
+        return acDAL.testaccount(user);
+    }
 
     public void addacBLL(String user, String pass) {
         acDAL.addAccount(user, pass);

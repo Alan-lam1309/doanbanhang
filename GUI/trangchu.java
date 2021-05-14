@@ -58,13 +58,24 @@ public class trangchu {
         b2.setFont(new Font("Vẻdana", Font.PLAIN, 21));
         JButton b3 = new JButton("Quản lí Hàng Hóa", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\images (4).png"));
         b3.setFont(new Font("Vẻdana", Font.PLAIN, 21));
-        JButton b4 = new JButton("Quản lí Account", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (9).png"));
+        JButton b4 = new JButton("Quản lí Account   ", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (9).png"));
         b4.setFont(new Font("Vẻdana", Font.PLAIN, 21));
-        b1.setBounds(0, 100, 301, 100);
-        b2.setBounds(0, 250, 301, 100);
-        b3.setBounds(0, 400, 301, 100);
-        b4.setBounds(0, 550, 301, 100);
+        JButton b5=new JButton("Đăng xuất");
+        b5.setFont(new Font("Vẻdana", Font.PLAIN, 20));
+        JButton b6 = new JButton("Quản lí Khách Hàng", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\images (6).png"));
+        b6.setFont(new Font("Vẻdana", Font.PLAIN, 21));
+        b1.setBounds(0, 50, 301, 100);
+        b2.setBounds(0, 200, 301, 100);
+        b3.setBounds(0, 350, 301, 100);
+        b4.setBounds(0, 500, 301, 100);
+        b6.setBounds(0, 650, 301, 100);        
+        b5.setBounds(50,750,200,50);
+        j.add(b1);
+        j.add(b2);
+        j.add(b3);
         j.add(b4);
+        j.add(b5);
+        j.add(b6);
 
         JButton nvq1 = new JButton("Nhân viên", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (4).png"));
         JButton hhq1 = new JButton("Hàng hóa", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download (2) (2).jpg"));
@@ -189,16 +200,23 @@ public class trangchu {
         JButton add = new JButton("ADD", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\add (2).jpg"));
         add.setBounds(50, 250, 120, 30);
         p3.add(add);
-        add.addActionListener(new ActionListener() {
-            @Override
-
+        add.addActionListener(new ActionListener() {                            
+            
             public void actionPerformed(ActionEvent e) {
                 if (!act1.getText().equals("") || !act2.getText().equals("")) {
-                    String user = act1.getText();
-                    String pass = act2.getText();
-                    Object[] row = {user, pass};
-                    model.addRow(row);
-                    addBLL.addacBLL(act1.getText(), act2.getText());
+                    if (addBLL.test(act1.getText())) {
+                        String user = act1.getText();
+                        String pass = act2.getText();
+                        Object[] row = {user, pass};
+                        model.addRow(row);
+                        addBLL.addacBLL(act1.getText(), act2.getText());
+                        act1.setText("");
+                        act2.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "TÊN TÀI KHOẢN ĐÃ TỒN TẠI");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "BẠN CHƯA NHẬP THÔNG TIN");
                 }
             }
         });
@@ -217,6 +235,8 @@ public class trangchu {
                         String m = (String.valueOf(actb.getValueAt(r, 1)));
                         addBLL.dltacDLL(n, m);
                         model.removeRow(r);
+                        act1.setText("");
+                        act2.setText("");
                     }
                 }
             }
@@ -228,15 +248,23 @@ public class trangchu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!act1.getText().equals("") || !act2.getText().equals("")) {
-                    int ques = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn update không?", "Hủy", JOptionPane.YES_NO_OPTION);
-                    if (ques == JOptionPane.YES_OPTION) {
-                        String m = (String) actb.getModel().getValueAt(r, 0);
-                        addBLL.updacDLL(m, act1.getText(), act2.getText());
-                        model.setValueAt(act1.getText(), r, 0);
-                        model.setValueAt(act2.getText(), r, 1);
-                        act1.setText("");
-                        act2.setText("");
+                    if (addBLL.test(act1.getText())) {
+                        int ques = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn update không?", "Hủy", JOptionPane.YES_NO_OPTION);
+                        if (ques == JOptionPane.YES_OPTION) {
+                            String m = (String) actb.getModel().getValueAt(r, 0);
+                            addBLL.updacDLL(m, act1.getText(), act2.getText());
+                            model.setValueAt(act1.getText(), r, 0);
+                            model.setValueAt(act2.getText(), r, 1);
+                            act1.setText("");
+                            act2.setText("");
+                        }
                     }
+                    else{
+                       JOptionPane.showMessageDialog(null,"TÊN TÀI KHOẢN ĐÃ TỒN TẠI");
+                    }
+                } 
+                else {
+                    JOptionPane.showMessageDialog(null, "KHÔNG CÓ THÔNG TIN ĐỂ CẬP NHẬT");
                 }
             }
         });
@@ -279,6 +307,12 @@ public class trangchu {
 
         });
         p.add(dtq1);
+        dtq1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new quanlydoanhthu();
+            }
+        });
         nvq1.setBounds(110, 150, 180, 70);
         hhq1.setBounds(110, 240, 180, 70);
         hdq1.setBounds(350, 150, 180, 70);
@@ -304,6 +338,12 @@ public class trangchu {
 
         });
         p.add(dtq2);
+        dtq2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new quanlydoanhthu();
+            }
+        });
         nvq2.setBounds(110, 560, 180, 70);
         hhq2.setBounds(110, 650, 180, 70);
         hdq2.setBounds(350, 560, 180, 70);
@@ -329,6 +369,12 @@ public class trangchu {
 
         });
         p.add(dtq3);
+        dtq3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new quanlydoanhthu();
+            }
+        });
         nvq3.setBounds(650, 150, 180, 70);
         hhq3.setBounds(650, 240, 180, 70);
         hdq3.setBounds(890, 150, 180, 70);
@@ -354,6 +400,12 @@ public class trangchu {
 
         });
         p.add(dtq4);
+        dtq4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new quanlydoanhthu();
+            }
+        });
         nvq4.setBounds(650, 560, 180, 70);
         hhq4.setBounds(650, 650, 180, 70);
         hdq4.setBounds(890, 560, 180, 70);
@@ -376,9 +428,7 @@ public class trangchu {
         j.add(p1);
         j.add(p2);
         j.add(p3);
-        j.add(b1);
-        j.add(b2);
-        j.add(b3);
+        
         b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 p1.setVisible(false);
@@ -389,11 +439,11 @@ public class trangchu {
         });
         b2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                p1.setVisible(true);
+                p1.setVisible(false);
                 p.setVisible(false);
                 p2.setVisible(false);
                 p3.setVisible(false);
-
+                new quanlydoanhthu();
             }
         });
         b3.addActionListener(new ActionListener() {
@@ -412,6 +462,18 @@ public class trangchu {
                 p3.setVisible(true);
                 p2.setVisible(false);
 
+            }
+        });
+        b5.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                new trangbanhang();
+                j.dispose();
+            }
+        });
+        b6.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new quanlykhachhang();
             }
         });
 

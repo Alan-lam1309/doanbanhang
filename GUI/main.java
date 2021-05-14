@@ -12,6 +12,7 @@ package Doanbanhang.GUI;
 public class main {
     public static void main(String[] args) {
         
-        new trangchu();    
+        //new trangbanhang();    
+        new trangchu();
     }
 }

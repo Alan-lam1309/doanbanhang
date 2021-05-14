@@ -43,21 +43,24 @@ public class quanlinhanvien extends JFrame {
         JTextField tf4 = new JTextField();
         JTextField tf5 = new JTextField();
         
-        JButton b1 = new JButton("THÊM");      
-        JButton b2 = new JButton("SỬA");    
-        JButton b3 = new JButton("XÓA");       
-        JButton b4 = new JButton("TÌM KIẾM");    
+        JButton b1 = new JButton("THÊM", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\add (2).jpg"));      
+        JButton b2 = new JButton("SỬA", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\images (7) (2).jpg"));    
+        JButton b3 = new JButton("XÓA", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\images (6) (2).jpg"));       
+        JButton b4 = new JButton("TÌM KIẾM", new ImageIcon("C:\\Users\\Quoc Phu\\Pictures\\doanjava\\download.jpg"));    
         JButton b5 = new JButton("THOÁT");
+        
+            
+            
         
     quanlinhanvien(){
         
         l1.setBounds(720, 30, 170, 70);
         add(l1);
-        b1.setBounds(150,550,100,40);
-        b2.setBounds(400, 550,100,40);
-        b3.setBounds(150,600,100,40);
-        b4.setBounds(400, 600,100,40);
-        b5.setBounds(1400,800,100,40);
+        b1.setBounds(150,550,120,40);
+        b2.setBounds(400, 550,120,40);
+        b3.setBounds(150,600,120,40);
+        b4.setBounds(400, 600,120,40);
+        b5.setBounds(250,800,100,40);
         
         p1.add(l2);
         p1.add(tf1);

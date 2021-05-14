@@ -58,7 +58,7 @@ public class qlkhDAL {
                 while (rs.next()) {
                     dulieukhachhang kh = new dulieukhachhang();
                     kh.setID(rs.getString("ID"));
-                     kh.setHovaten(rs.getString("Hovaten"));
+                    kh.setHovaten(rs.getString("Hovaten"));
                     kh.setEmail(rs.getString("email"));
                     kh.setSodienthoai(rs.getString("sodienthoai"));
                     kh.setDiachi(rs.getString("diachi"));
@@ -78,7 +78,7 @@ public class qlkhDAL {
         }
        return a; 
     }
-    public void addkhachhang(String ID,String hovaten,String email,String sodienthoai,String diachi,String loaikh,String diemtichluy ) {
+    public void addkhachhang(String ID,String hovaten,String email,String sodienthoai,String diachi,String loaikhachhang, String diemtichluy) {
         String add = "INSERT INTO khachhang VALUES(?,?,?,?,?,?,?)";
         if (Connection() ) {
             try {
@@ -88,7 +88,7 @@ public class qlkhDAL {
                 pre.setString(3,email);
                 pre.setString(4,sodienthoai);
                 pre.setString(5,diachi);
-                pre.setString(6,loaikh);
+                pre.setString(6,loaikhachhang);
                 pre.setString(7,diemtichluy);
                 pre.executeUpdate();
             } catch (Exception e) {

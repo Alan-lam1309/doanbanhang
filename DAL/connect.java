@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Doanbanhang.DAL;
+
 
 
     import java.sql.*;
     import java.util.Scanner;
 import javax.swing.*;
+       
     public class connect {
 
     public connect() {
@@ -17,13 +14,12 @@ import javax.swing.*;
         public Connection con;
         public Scanner sc = new Scanner(System.in);
 
-//        public static void main(String[] args) {
-//            new connect();
-//        } 
+
         
         public  Connection connectsql()
         {
-                 String dbUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=QLBanHangD_A";
+               
+                String dbUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=QLBanHangD_A";
                 String username = "lamquocphu1309";
                 String password = "0704720250";
                 try
@@ -37,34 +33,52 @@ import javax.swing.*;
                 }
                 return  null;
         }
-//        connect() {
-//
-//            try {
-//                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-//                String dbUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=QLHANGHOA";
-//                String username = "sa";
-//                String password = "sa";
-//                con = DriverManager.getConnection(dbUrl, username, password);
-                //System.out.println("Them SP");
-                //addSP();
-                //System.out.println("Hien Thi DS_SP sau Khi them SP");
-                //DisPlay();
-                //System.out.println("Xoa SP");
-                //DeleteSP();
-                //System.out.println("Hien Thi DS_SP sau Khi xoa SP");
-                //DisPlay();
-
-                //System.out.println("Sua SP");
-                //UpdateSP();
-                //System.out.println("hien thi DS_Sp sau khi sua SP");
-                //DisPlay();
-//                System.out.println("tim SP theo LoaiSP");
-//                FindSP();
-//                con.close();
-//            } catch (Exception e) {
-//                System.err.println(e.getMessage());
-//
-//            }
-//
-//        }
     }
+
+  /*
+    public class connect {
+
+        public Connection con;
+        public Scanner sc = new Scanner(System.in);
+
+      
+
+        connect() {
+
+            try {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                String dbUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=QLHANGHOA";
+                String username = "sa";
+                String password = "sa";
+                con = DriverManager.getConnection(dbUrl, username, password);              
+                con.close();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+
+            }
+
+        }
+    }
+
+
+
+
+/*
+        private void FindSP() {
+            try {
+                Statement stmt = con.createStatement();
+                String LoaiSP = sc.nextLine();
+                ResultSet rs = stmt.executeQuery("select * from SanPham "
+                        + " where MaLoaiSP in(select MaLoaiSP from LoaiSanPham where TenLoaiSP ='" + LoaiSP + "')");
+                while (rs.next()) {
+                    System.out.println("MaSP: " + rs.getString("MaSP") + " TenSP: "
+                            + rs.getString("TenSP") + " Gia: " + rs.getString("Gia")
+                            + " MaLoaiSP: " + rs.getString("MaLoaiSP"));
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+    }
+*/
+    

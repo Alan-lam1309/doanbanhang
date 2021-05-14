@@ -15,6 +15,7 @@ import Doanbanhang.GUI.trangchu;
 import java.util.ArrayList;
 import java.util.Vector;
 import Doanbanhang.DTO.dulieuaccount;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -87,7 +88,6 @@ public class addaccountDAL {
                 pre.execute();
                 ResultSet rs = pre.getResultSet();
                 while (rs.next()) {
-                    System.out.println("TRÙNG TÊN ĐĂNG NHẬP");
                     return false;
                 }
 
